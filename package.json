@@ -78,7 +78,8 @@
     "ext": "js,json,njk,scss",
     "ignore": [
       "public/dist",
-      "locales"
+      "locales",
+      "public"
     ]
   }
 }
