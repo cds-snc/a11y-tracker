@@ -15,9 +15,9 @@ const csp = require('./config/csp.config')
 const csrf = require('csurf')
 
 // check to see if we have a custom configRoutes function
-let { configRoutes, routes, locales } = require('./config/routes.config')
+let { routes, locales } = require('./config/routes.config')
 
-if (!configRoutes) configRoutes = require('./utils/route.helpers').configRoutes
+const { configRoutes } = require('./utils/route.helpers')
 if (!locales) locales = ['en', 'fr']
 
 // initialize application.
