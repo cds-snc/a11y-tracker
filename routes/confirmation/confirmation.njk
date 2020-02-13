@@ -1,0 +1,44 @@
+{% extends "base.njk" %}
+
+{% block content %}
+
+    <h1>{{ __('confirmation.title') }}</h1>
+
+    <div>
+        <p>
+            {{ __('confirmation.intro') }}
+        </p>
+        <ul>
+            <li>{{ __('form.fullname') }}:  <strong>{{ fullname }}</strong></li>
+            <li>{{ __('form.email') }}: <strong>{{ email }}</strong></li>
+            <li>{{ __('form.send_notifications') }}: <strong>{{ send_notifications }}</strong></li>
+
+            {% if send_notifications == "Yes" %}
+                <li>
+                    {{ __('form.notify_by') }}:
+                    <ul>
+                        {% if notify_type.sms %}<li><strong>SMS</strong></li>{% endif %}
+                        {% if notify_type.email %}<li><strong>Email</strong></li>{% endif %}
+                    </ul>
+                </li>
+            {% endif %}
+
+            <li>
+                <strong>Addresses</strong>
+                {% for address in addresses %}
+                    <div>
+                        <em>Address #{{ loop.index }}</em>
+                        <ul>
+                            <li>{{__('addresses.street')}}: {{ address.street }}</li>
+                            <li>{{__('addresses.type')}}: {{ address.type }}</li>
+                            <li>{{__('addresses.features')}}: {{ address.features | dump}}</li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </li>
+
+
+        </ul>
+    </div>
+
+{% endblock %}

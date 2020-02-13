@@ -1,0 +1,44 @@
+{#
+  - `name`: field name
+  - `label`: text for the label
+  - `attributes`: object of optional attributes: id, class, hint, divClasses, autocomplete
+#}
+{% macro textArea(relname, label,
+                  required=false,
+                  hint=false,
+                  class=false) %}
+    {% set val = getData(relname) %}
+    {% set error = getError(relname) %}
+    {% set name = getName(relname) %}
+
+    <div class="{{ 'has-error' if error }} cds-form-control">
+        <label for="{{ name }}" id="{{ name }}__label">
+        {% if required %}
+            <span aria-hidden="true" class="required">*</span>
+        {% endif %}
+        {{ __(label) }}
+        {% if required %}
+            <span class="required">{{ __("required")}}</span>
+        {% endif %}
+        </label>
+        {% if hint %}
+            <span class="form-message">{{ __(hint) }}</span>
+        {% endif %}
+        {% if error %}
+            {{ validationMessage(error, name) }}
+        {% endif %}
+        <textarea
+            id="{{ name }}"
+            name="{{ name }}"
+            {% if error %}
+                aria-describedby="{{ name }}-error"
+                aria-invalid="true"
+            {% endif %}
+            {% if isFirstError(relname) %}
+                autofocus="true"
+            {% endif %}
+        >
+            {{- val -}}
+        </textarea>
+    </div>
+{% endmacro %}
