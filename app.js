@@ -14,6 +14,7 @@ const { hasData, contextMiddleware } = require('./utils')
 const { addNunjucksFilters } = require('./filters')
 const csp = require('./config/csp.config')
 const csrf = require('csurf')
+const apiController = require('./api.controller')
 
 // check to see if we have a custom configRoutes function
 let { routes, locales } = require('./config/routes.config')
@@ -33,9 +34,7 @@ app.use(express.urlencoded({ extended: true }))
 const api = (() => {
   const router = new express.Router()
 
-  router.post('/scan-result', (req, res) => {
-    res.send('Hello from the API')
-  })
+  router.post('/scan-result', apiController.addA11yScanResult)
 
   return router
 })()
