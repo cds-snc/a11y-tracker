@@ -3,6 +3,7 @@ require('dotenv').config()
 
 // import node modules.
 const express = require('express')
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const compression = require('compression')
 const helmet = require('helmet')
@@ -25,9 +26,23 @@ require('./db')
 // initialize application.
 const app = express()
 
-// general app configuration.
-app.use(express.json())
+app.use(bodyParser.json({limit: '2mb'})) // the JSON payloads we are expecting from axe-scans are quite big
 app.use(express.urlencoded({ extended: true }))
+
+// create api router
+const api = (() => {
+  const router = new express.Router()
+
+  router.post('/scan-result', (req, res) => {
+    res.send('Hello from the API')
+  })
+
+  return router
+})()
+ 
+// mount api before csrf is appended to the app stack
+app.use('/api', api)
+
 app.use(cookieParser(process.env.app_session_secret))
 app.use(require('./config/i18n.config').init)
 
