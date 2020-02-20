@@ -20,6 +20,8 @@ let { routes, locales } = require('./config/routes.config')
 const { configRoutes } = require('./utils/route.helpers')
 if (!locales) locales = ['en', 'fr']
 
+require('./db')
+
 // initialize application.
 const app = express()
 
