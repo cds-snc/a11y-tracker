@@ -29,35 +29,20 @@ const app = express()
 
 app.use(bodyParser.json({limit: '2mb'})) // the JSON payloads we are expecting from axe-scans are quite big
 app.use(express.urlencoded({ extended: true }))
-
-// create api router
-const api = (() => {
-  const router = new express.Router()
-
-  router.post('/scan-result', apiController.addA11yScanResult)
-
-  return router
-})()
- 
-// mount api before csrf is appended to the app stack
-app.use('/api', api)
-
 app.use(cookieParser(process.env.app_session_secret))
 app.use(require('./config/i18n.config').init)
 
 // CSRF setup
-app.use(
-  csrf({
-    cookie: true,
-    signed: true,
-  }),
-)
+const csrfMiddleware = csrf({cookie: true, signed: true })
 
-// append csrfToken to all responses
-app.use(function(req, res, next) {
-  res.locals.csrfToken = req.csrfToken()
-  next()
+locales.forEach((locale) => {
+  app.use(`/${locale}`, csrfMiddleware, function(req, res, next) {
+    res.locals.csrfToken = req.csrfToken()
+    next()
+  })
 })
+
+app.post('/api/v1/scan-result', apiController.addA11yScanResult)
 
 // in production: use redis for sessions
 // but this works for now
