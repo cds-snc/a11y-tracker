@@ -14,7 +14,6 @@ const { hasData, contextMiddleware } = require('./utils')
 const { addNunjucksFilters } = require('./filters')
 const csp = require('./config/csp.config')
 const csrf = require('csurf')
-const apiController = require('./api.controller')
 
 // check to see if we have a custom configRoutes function
 let { routes, locales } = require('./config/routes.config')
@@ -41,8 +40,6 @@ locales.forEach((locale) => {
     next()
   })
 })
-
-app.post('/api/v1/scan-result', apiController.addA11yScanResult)
 
 // in production: use redis for sessions
 // but this works for now
