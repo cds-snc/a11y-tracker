@@ -3,6 +3,7 @@ require('dotenv').config()
 
 // import node modules.
 const express = require('express')
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const compression = require('compression')
 const helmet = require('helmet')
@@ -25,24 +26,19 @@ require('./db')
 // initialize application.
 const app = express()
 
-// general app configuration.
-app.use(express.json())
+app.use(bodyParser.json({limit: '2mb'})) // the JSON payloads we are expecting from axe-scans are quite big
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser(process.env.app_session_secret))
 app.use(require('./config/i18n.config').init)
 
 // CSRF setup
-app.use(
-  csrf({
-    cookie: true,
-    signed: true,
-  }),
-)
+const csrfMiddleware = csrf({cookie: true, signed: true })
 
-// append csrfToken to all responses
-app.use(function(req, res, next) {
-  res.locals.csrfToken = req.csrfToken()
-  next()
+locales.forEach((locale) => {
+  app.use(`/${locale}`, csrfMiddleware, function(req, res, next) {
+    res.locals.csrfToken = req.csrfToken()
+    next()
+  })
 })
 
 // in production: use redis for sessions

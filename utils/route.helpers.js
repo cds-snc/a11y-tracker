@@ -78,7 +78,9 @@ class Route {
     }
 
     // prepend the locale (/en, /fr) to each path
-    this.table.locales.forEach(l => { this.path[l] = `/${l}${this.path[l]}` })
+    if (this.path) {
+      this.table.locales.forEach(l => { this.path[l] = `/${l}${this.path[l]}` })
+    }
   }
 
   // an alias for RoutingTable::get
