@@ -16,20 +16,14 @@ const addA11yScanResult = async (req, res) => {
     axe_meta_data: {
       testEngine: _json.result.testEngine,
       testRunner: _json.result.testRunner,
-      toolOptions: _json.result.toolOptions
+      toolOptions: _json.result.toolOptions,
     },
     project_name: _json.project_name,
     scan_name: _json.scan_name,
-    revision: _json.revision
+    revision: _json.revision,
   })
 
-  await newA11yScanModel.save()
-
-  A11yScan.countDocuments({}, (err, nScans) => {
-    console.log("You've inserted a new result into the A11yScan DB table")
-    console.log(`There are now ${nScans} scans in the table`)
-  });
-  
+  await newA11yScanModel.save()  
   res.json({ message: 'success' })
 }
 
