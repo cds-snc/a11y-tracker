@@ -64,5 +64,7 @@
   "addresses.features.yard": "Yard",
   "addresses.remove": "[- remove]",
   "addresses.add-another": "[+ add another]",
-  "errors.address.length": "Please fill in an address"
+  "errors.address.length": "Please fill in an address",
+  "scans.title": "Scans Title",
+  "scans.intro": "Scans Intro"
 }
