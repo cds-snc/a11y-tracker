@@ -1,5 +1,10 @@
-module.exports = (app, route) => {
-  const name = route.name
+const A11yScan = require('../../models/a11y-scan.js')
 
-  route.draw(app).get(route.render())
+module.exports = (app, route) => {
+  const loadScans = async (req, res, next) => {
+    res.locals.scans = await A11yScan.find({})
+    next()
+  } 
+
+  route.draw(app).use(loadScans).get(route.render())
 }
