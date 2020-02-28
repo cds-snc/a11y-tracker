@@ -3,8 +3,6 @@ const A11yScan = require('../../models/a11y-scan.js')
 const addA11yScanResult = async (req, res) => {
   const _json = req.body // JSON data representing one scan 
 
-  // console.log(_json.result.violations)
-
   const newA11yScanModel = new A11yScan({
     url: _json.result.url,
     testEnvironment: _json.result.testEnvironment,
