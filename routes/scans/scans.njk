@@ -1,14 +1,32 @@
 {% extends "base.njk" %}
 
 {% block content %}
-
     <h1>{{ __('scans.title') }}</h1>
 
-    <div>
-        <p>
-            {{ __('scans.intro') }}
-        </p>
-        <div>{{ scans }}</div>
+
+    <div style="width: 100% !important">
+        <table class="scans-table w-full">
+            <thead>
+                <tr>
+                    <th>Failed</th>
+                    <th>Incomplete</th>
+                    <th>Inapplicable</th>
+                    <th>Passed</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for scan in scans %}
+                    <tr class="text-center">
+                        <td>{{ scan.violations.length }}</td>
+                        <td>{{ scan.incomplete.length }}</td>
+                        <td>{{ scan.inapplicable.length }}</td>
+                        <td>{{ scan.passes.length }}</td>
+                        <td>{{ scan.timeStamp.toISOString() }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
 {% endblock %}
