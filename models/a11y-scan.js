@@ -13,7 +13,9 @@ const a11yScanSchema = new Schema({
   // meta-data fields that do not mirror axe-core result object fields 
   scan_name: String, // short description of the state of the webpage/DOM while the scan was run (e.g. "Invalid login state")
   project_name: String, // short description of the project/app the URL belongs to (e.g. "CPPD Disability Benefit" )
-  revision: String, // the version of the project/app that was scanned (e.g. Git hash or version tag) 
+  revision: String, // the version of the project/app that was scanned (e.g. Git hash or version tag)
+}, {
+  timestamps: true
 })
 
 const A11yScan = mongoose.model('A11yScan', a11yScanSchema)
