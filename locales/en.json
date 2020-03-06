@@ -64,5 +64,7 @@
   "addresses.features.yard": "Yard",
   "addresses.remove": "[- remove]",
   "addresses.add-another": "[+ add another]",
-  "errors.address.length": "Please fill in an address"
+  "errors.address.length": "Please fill in an address",
+  "scans.title": "All A11y Scans",
+  "scans.url": "https://benefits-avantages.veterans.gc.ca/benefits-directory?lng=en&patronType=veteran&serviceType=CAF&selectedNeeds=recl3hMcrWpKFaR9B"
 }
