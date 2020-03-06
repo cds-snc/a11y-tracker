@@ -1,7 +1,7 @@
 const A11yScan = require('../../models/a11y-scan.js')
 
 const addA11yScanResult = async (req, res) => {
-  const _json = JSON.parse(req.body) // JSON data representing one scan 
+  const _json = req.body // JSON data representing one scan 
 
   const newA11yScanModel = new A11yScan({
     url: _json.result.url,
