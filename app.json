@@ -3,6 +3,11 @@
   "description": "",
   "formation": {},
   "addons": [],
+  "env": {
+    "MONGODB_URI": {
+      "required": true
+    }
+  },
   "buildpacks": [
     {
       "url": "heroku/nodejs"
