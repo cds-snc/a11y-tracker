@@ -6,12 +6,4 @@
 
     {{ banner('blue', '<p>' + __('start.intro.banner') + '</p>') }}
 
-    <div>{{ __('start.intro') | safe }}</div>
-    <div>
-        <a class="button-link" href="{{ routePath(route.next) }}" role="button" draggable="false">
-            {{ __('start.submit') }}
-            <span aria-hidden="true">→</span>
-        </a>
-    </div>
-
 {% endblock %}
