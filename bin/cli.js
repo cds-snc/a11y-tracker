@@ -10,6 +10,7 @@ program.version('0.0.1')
 
 program.option('a11y', 'Generates the a11y json')
 program.option('routes', 'Prints out all the routes')
+program.option('key', 'Generates an API key')
 
 program.parse(process.argv)
 
@@ -28,4 +29,8 @@ if (program.a11y) {
 
 if (program.routes) {
   console.log(_routesConfig.routes)
+}
+
+if (program.key) {
+  console.log("Generating API key ...")
 }

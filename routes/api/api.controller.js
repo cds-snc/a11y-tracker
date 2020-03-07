@@ -24,7 +24,7 @@ const addA11yScanResult = async (req, res) => {
 
     await newA11yScanModel.save()  
     res.json({ message: 'success' })
-  } catch {
+  } catch(e) {
     res.json({ message: 'Failed to save! Check schema!' })
   }
 }
