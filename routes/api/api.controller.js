@@ -6,6 +6,7 @@ const addA11yScanResult = async (req, res) => {
 
   if (!key) { 
     res.json({ message: 'API key not valid' })
+    return 
   }
 
   if (key.revoked) { 

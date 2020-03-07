@@ -54,6 +54,7 @@
     "@aws-cdk/aws-ecs": "1.17.1",
     "@aws-cdk/aws-ecs-patterns": "1.17.1",
     "@aws-cdk/core": "1.17.1",
+    "@shelf/jest-mongodb": "^1.1.3",
     "acorn": "^7.1.0",
     "cheerio": "^1.0.0-rc.3",
     "eslint": "^6.6.0",
