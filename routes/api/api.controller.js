@@ -1,6 +1,18 @@
 const A11yScan = require('../../models/a11y-scan.js')
+const ApiKey = require('../../models/api-key.js')
 
 const addA11yScanResult = async (req, res) => {
+
+  const key = await ApiKey.findOne({key: req.body.key})
+
+  if (!key) { 
+    res.json({ message: 'API key not valid' })
+  }
+
+  if (key.revoked) { 
+    res.json({ message: 'API key is revoked' })
+  }
+
   try {
     const _json = req.body // JSON data representing one scan 
 
@@ -20,6 +32,7 @@ const addA11yScanResult = async (req, res) => {
       project_name: _json.project_name,
       scan_name: _json.scan_name,
       revision: _json.revision,
+      organisation: key.organisation,
     })
 
     await newA11yScanModel.save()  
