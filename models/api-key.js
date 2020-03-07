@@ -1,10 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const uuid = require("uuidv4");
+
+const generateApiKey = () => {
+  return `cds-snc:a11y-tracker:${uuid.uuid()}`
+}
 
 const apiKeySchema = new Schema({
-  key: String, // The API key
-  project_name: String, // short description of the project/app the URL belongs to (e.g. "CPPD Disability Benefit" )
-  revoked: Boolean, // if the key is revoked
+  key: {type:String, default: generateApiKey()}, // The API key
+  organisation: String, // Name of the organisation that owns the key
+  revoked: {type:Boolean, default: false}, // if the key is revoked
 }, {
   timestamps: true
 })

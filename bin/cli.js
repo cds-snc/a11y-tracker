@@ -10,7 +10,7 @@ program.version('0.0.1')
 
 program.option('a11y', 'Generates the a11y json')
 program.option('routes', 'Prints out all the routes')
-program.option('key', 'Generates an API key')
+program.option('-k, --key <name>', 'Generates an API key for and organisation')
 
 program.parse(process.argv)
 
@@ -32,5 +32,12 @@ if (program.routes) {
 }
 
 if (program.key) {
-  console.log("Generating API key ...")
+  //require('./db')
+  const ApiKey = require('../models/api-key.js')
+  console.log("Generating API key for", program.key, "...")
+  const key = new ApiKey({
+    organisation: program.key,
+  })
+  //await key.save() 
+  console.log("API Key for", program.key, ':', key.key)
 }
