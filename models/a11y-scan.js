@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 
-const a11yScanSchema = new Schema({
+const a11yScanSchema = new mongoose.Schema({
   url: String, // the URL that was scanned
   testEnvironment: {}, // state of the client/browser during the scan
   timeStamp: Date,
