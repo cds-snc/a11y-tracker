@@ -41,5 +41,5 @@ const addA11yScanResult = async (req, res) => {
 }
 
 module.exports = (app) => {
-  app.post('/api/v1/scan-result', addA11yScanResult)
+  app.post('/api/v1/scans', addA11yScanResult)
 }
