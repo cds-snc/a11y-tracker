@@ -8,7 +8,7 @@ const generateApiKey = () => {
 
 const apiKeySchema = new Schema({
   key: {type:String, default: generateApiKey()}, // The API key
-  organisation: String, // Name of the organisation that owns the key
+  organisation: {type:String, required: true}, // Name of the organisation that owns the key
   revoked: {type:Boolean, default: false}, // if the key is revoked
 }, {
   timestamps: true
