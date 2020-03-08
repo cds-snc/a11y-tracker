@@ -5,12 +5,13 @@ const addA11yScanResult = async (req, res) => {
   const key = await ApiKey.findOne({key: req.body.key})
 
   if (!key) { 
-    res.json({ message: 'API key not valid' })
-    return 
+    res.status(400).json({ message: 'API key not valid' })
+    return
   }
 
-  if (key.revoked) { 
-    res.json({ message: 'API key is revoked' })
+  if (key.revoked === true) { 
+    res.status(401).json({ message: 'API key is revoked' })
+    return
   }
 
   try {
@@ -35,9 +36,9 @@ const addA11yScanResult = async (req, res) => {
       organisation: key.organisation,
     })
     await newA11yScanModel.save()  
-    res.json({ message: 'success' })
+    res.json({ message: 'Success' })
   } catch(e) {
-    res.json({ message: 'Failed to save! Check schema!' })
+    res.status(500).json({ message: 'Failed to save! Check schema!' })
   }
 }
 
