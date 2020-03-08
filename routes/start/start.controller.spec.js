@@ -1,5 +1,6 @@
 const request = require('supertest')
 const app = require('../../app.js')
+const db = require('../../db.js')
 
 const mockFn = jest
   .fn((req, routePath, jsPath = null) => 'default')
@@ -17,4 +18,10 @@ test('Can send get request to start route and have js src set', async () => {
   const response = await request(app).get(route.path.en)
   expect(response.statusCode).toBe(200)
   expect(response.text).toContain('digital.canada.ca')
+})
+
+afterAll(async done => {
+  // Closing the DB connection allows Jest to exit successfully.
+  db.close()
+  done()
 })
