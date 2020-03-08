@@ -1,8 +1,10 @@
 const A11yScan = require('../../models/a11y-scan.js')
 const ApiKey = require('../../models/api-key.js')
+const {SHA256} = require("sha2");
 
 const addA11yScanResult = async (req, res) => {
-  const key = await ApiKey.findOne({key: req.body.key})
+  hash = SHA256(`${req.body.key}.${process.env.SALT}`).toString("base64")
+  const key = await ApiKey.findOne({key: hash})
 
   if (!key) { 
     res.status(400).json({ message: 'API key not valid' })

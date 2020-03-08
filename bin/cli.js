@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const program = require('commander');
+const {SHA256} = require("sha2");
 
 program
   .version('0.0.1')
@@ -12,8 +13,10 @@ program
     const key = new ApiKey({
       organisation: name,
     })
+    const clear = key.key
+    key.key = SHA256(`${clear}.${process.env.SALT}`).toString("base64")
     key.save().then(() => {
-      console.log("API Key for", name, ':', key.key)
+      console.log("API Key for", name, ':', clear)
       return process.exit(0);
     })
     

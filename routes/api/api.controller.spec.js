@@ -1,7 +1,7 @@
 const request = require('supertest')
 const app = require('../../app.js')
 const db = require('../../db.js')
-
+const {SHA256} = require("sha2");
 const ApiKey = require('./../../models/api-key.js')
 
 test('Returns API key not valid is empty', async () => {
@@ -15,9 +15,12 @@ test('Returns API key is revoked if revoked', async () => {
     organisation: 'foo',
     revoked: true,
   })
+  const clear = key.key
+  key.key = SHA256(`${clear}.${process.env.SALT}`).toString("base64")
   await key.save()
+
   const response = await request(app).post('/api/v1/scans').send({
-    key: key.key,
+    key: clear,
   })
   expect(response.statusCode).toBe(401)
   expect(response.body.message).toBe("API key is revoked")
@@ -27,10 +30,12 @@ test('Failed to save! Check schema! is something is missing', async () => {
   const key = new ApiKey({
     organisation: 'bar',
   })
+  const clear = key.key
+  key.key = SHA256(`${clear}.${process.env.SALT}`).toString("base64")
   await key.save()
 
   const response = await request(app).post('/api/v1/scans').send({
-    key: key.key,
+    key: clear,
   })
   expect(response.statusCode).toBe(500)
   expect(response.body.message).toBe("Failed to save! Check schema!")
@@ -40,11 +45,13 @@ test('Success is something is there', async () => {
   const key = new ApiKey({
     organisation: 'bar',
   })
+  const clear = key.key
+  key.key = SHA256(`${clear}.${process.env.SALT}`).toString("base64")
   await key.save()
 
   const response = await request(app).post('/api/v1/scans').send({
     project_name: "bar",
-    key: key.key,
+    key: clear,
     result: {
       url: "foo",
     },
