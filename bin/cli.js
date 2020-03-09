@@ -1,31 +1,27 @@
 #!/usr/bin/env node
-var _routesConfig = require('../config/routes.config.js')
-const path = require('path')
-const fs = require('fs');
+const program = require('commander');
+const {SHA256} = require("sha2");
+
+program
+  .version('0.0.1')
+  .command('key <name>')
+  .description('Generates an API key for and organisation')
+  .action((name) => {
+    require('./../db')
+    const ApiKey = require('../models/api-key.js')
+    console.log("Generating API key for", name, "...")
+    const key = new ApiKey({
+      organisation: name,
+    })
+    const clear = key.key
+    key.key = SHA256(`${clear}.${process.env.SALT}`).toString("base64")
+    key.save().then(() => {
+      console.log("API Key for", name, ':', clear)
+      return process.exit(0);
+    })
+    
+  })
+
+program.parse(process.argv);
 
 
-const commander = require('commander')
-const program = new commander.Command()
-program.version('0.0.1')
-
-program.option('a11y', 'Generates the a11y json')
-program.option('routes', 'Prints out all the routes')
-
-program.parse(process.argv)
-
-if (program.a11y) {
-  const paths = _routesConfig.routes.map(p => p.path.replace("/", ""))
-  const object = {"urls": paths}
-  const outDir = path.join(process.cwd())
-  const outFile = "a11y.json"
-
-  fs.writeFile(`${outDir}/${outFile}`, JSON.stringify(object), function (err) {
-    if (err) throw err;
-    console.log('Wrote paths for a11y checker');
-  });
-
-}
-
-if (program.routes) {
-  console.log(_routesConfig.routes)
-}

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const connectURL = process.env.MONGODB_URI || 'mongodb://localhost/a11y-scans'
+const connectURL = process.env.MONGODB_URI || process.env.MONGO_URL ||'mongodb://localhost/a11y-scans'
 
 mongoose.connect(connectURL, {
   useNewUrlParser: true,
@@ -15,3 +15,5 @@ db.on('error', err => {
 })
 
 db.once('open', () => console.log('MongoDB connection established'))
+
+module.exports = db

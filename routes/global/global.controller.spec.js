@@ -1,5 +1,6 @@
 const request = require('supertest')
 const app = require('../../app.js')
+const db = require('../../db.js')
 
 if (process.env.NODE_ENV === 'test') {
   app.get('/test-500', (req, res) => {
@@ -20,4 +21,10 @@ test('Returns 500', async () => {
 test('Returns 302', async () => {
   const response = await request(app).get('/clear')
   expect(response.statusCode).toBe(302)
+})
+
+afterAll(async done => {
+  // Closing the DB connection allows Jest to exit successfully.
+  db.close()
+  done()
 })
