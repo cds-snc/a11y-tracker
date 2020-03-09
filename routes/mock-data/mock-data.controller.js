@@ -16,6 +16,6 @@ const deleteSeedRecords = async (req, res) => {
 }
 
 module.exports = (app) => {
-  app.get('/mock-data/create', insertSeedRecords),
+  app.get('/mock-data/create', insertSeedRecords)
   app.get('/mock-data/delete', deleteSeedRecords)
 }
