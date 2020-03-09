@@ -1,5 +1,5 @@
 const A11yScan = require('../../models/a11y-scan.js')
-const vacScan = require('./data/vac_axe_results.json')
+const vacScan = require('./data/vac-axe-results.json')
 
 const mockProjectName = "Mock Data : Find Benefits and Services"
 
