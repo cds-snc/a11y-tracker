@@ -3,7 +3,7 @@ const ApiKey = require('../../models/api-key.js')
 const {SHA256} = require("sha2");
 
 const addA11yScanResult = async (req, res) => {
-  hash = SHA256(`${req.body.key}.${process.env.SALT}`).toString("base64")
+  const hash = SHA256(`${req.body.key}.${process.env.SALT}`).toString("base64")
   const key = await ApiKey.findOne({key: hash})
 
   if (!key) { 
@@ -20,7 +20,7 @@ const addA11yScanResult = async (req, res) => {
     const _json = req.body // JSON data representing one scan 
     await A11yScan.insertAxeCoreResult(_json.result, _json.project_name, _json.scan_name, _json.revision, key.organisation)  
     res.json({ message: 'Success' })
-  } catch {
+  } catch(e) {
     res.status(500).json({ message: 'Failed to save! Check schema!' })
   }
 }

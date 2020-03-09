@@ -1,17 +1,17 @@
 const A11yScan = require('../../models/a11y-scan.js')
 const vacScan = require('./data/vac_axe_results.json')
 
-const mock_project_name = "Mock Data : Find Benefits and Services"
+const mockProjectName = "Mock Data : Find Benefits and Services"
 
 const insertSeedRecords = async (req, res) => {
-  let scan_name = "Results index page with Disability Benefit details expanded",
-  revision = "f5d936ed375a374345612af9dc7e7450400a26a3"
-  await A11yScan.insertAxeCoreResult(vacScan, mock_project_name, scan_name, revision, "cdssnc")
+  const scanName = "Results index page with Disability Benefit details expanded"
+  const revision = "f5d936ed375a374345612af9dc7e7450400a26a3"
+  await A11yScan.insertAxeCoreResult(vacScan, mockProjectName, scanName, revision, "cdssnc")
   res.send('Database seeded');
 }
 
 const deleteSeedRecords = async (req, res) => {
-  await A11yScan.deleteMany({project_name: mock_project_name})
+  await A11yScan.deleteMany({project_name: mockProjectName})
   res.send('Seed Documents removed from DB')
 }
 
