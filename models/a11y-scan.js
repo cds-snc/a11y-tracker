@@ -18,6 +18,27 @@ const a11yScanSchema = new Schema({
   timestamps: true
 })
 
-const A11yScan = mongoose.model('A11yScan', a11yScanSchema)
+a11yScanSchema.statics.insertAxeCoreResult = async function(axeResultObj, projectName, scanName, revision, organisation) {
+  const _newModel = new this({
+    url: axeResultObj.url,
+    testEnvironment: axeResultObj.testEnvironment,
+    timeStamp: axeResultObj.timestamp,
+    violations: axeResultObj.violations,
+    passes: axeResultObj.passes,
+    incomplete: axeResultObj.incomplete,
+    inapplicable: axeResultObj.inapplicable,
+    axe_meta_data: {
+      testEngine: axeResultObj.testEngine,
+      testRunner: axeResultObj.testRunner,
+      toolOptions: axeResultObj.toolOptions,
+    },
+    project_name: projectName,
+    scan_name: scanName,
+    revision: revision,
+    organisation: organisation,
+  })
 
-module.exports = A11yScan
+  await _newModel.save()  
+}
+
+module.exports = mongoose.model('A11yScan', a11yScanSchema)
