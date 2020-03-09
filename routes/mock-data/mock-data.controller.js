@@ -6,7 +6,7 @@ const mock_project_name = "Mock Data : Find Benefits and Services"
 const insertSeedRecords = async (req, res) => {
   let scan_name = "Results index page with Disability Benefit details expanded",
   revision = "f5d936ed375a374345612af9dc7e7450400a26a3"
-  await A11yScan.insertAxeCoreResult(vacScan, mock_project_name, scan_name, revision)
+  await A11yScan.insertAxeCoreResult(vacScan, mock_project_name, scan_name, revision, "cdssnc")
   res.send('Database seeded');
 }
 

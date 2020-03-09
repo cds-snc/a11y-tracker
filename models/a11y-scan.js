@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const a11yScanSchema = new Schema({
   url: {type: String, required: true}, // the URL that was scanned
@@ -17,7 +18,7 @@ const a11yScanSchema = new Schema({
   timestamps: true
 })
 
-a11yScanSchema.statics.insertAxeCoreResult = async function(axeResultObj, projectName, scanName, revision) {
+a11yScanSchema.statics.insertAxeCoreResult = async function(axeResultObj, projectName, scanName, revision, organisation) {
   const _newModel = new this({
     url: axeResultObj.url,
     testEnvironment: axeResultObj.testEnvironment,
@@ -34,6 +35,7 @@ a11yScanSchema.statics.insertAxeCoreResult = async function(axeResultObj, projec
     project_name: projectName,
     scan_name: scanName,
     revision: revision,
+    organisation: organisation,
   })
 
   await _newModel.save()  

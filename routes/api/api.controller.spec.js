@@ -54,6 +54,9 @@ test('Success is something is there', async () => {
     key: clear,
     result: {
       url: "foo",
+      project_name: "foo",
+      scan_name: "foo",
+      revision: "foo",
     },
   })
   expect(response.statusCode).toBe(200)
