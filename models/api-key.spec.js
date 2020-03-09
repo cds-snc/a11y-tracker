@@ -1,4 +1,5 @@
 const ApiKey = require('./api-key.js')
+const db = require('../db.js')
 
 test('requires an organisation', async () => {
   const key = new ApiKey()
@@ -19,4 +20,10 @@ test('autogenerates a key with a prefix', async () => {
     organisation: 'foo',
   })
   expect(key.key).toContain("cds-snc:a11y-tracker:")
+})
+
+afterAll(async done => {
+  // Closing the DB connection allows Jest to exit successfully.
+  db.close()
+  done()
 })
