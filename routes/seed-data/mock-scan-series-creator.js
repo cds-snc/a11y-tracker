@@ -50,33 +50,3 @@ const newMockScanResult = async (date) => {
 }
 
 module.exports = createMockScanSeries
-
-// const createMockA11yScanModel = async function(axeResultObj, date, projectName, scanName, revision, organisation) {
-//   const _newModel = new A11yScan({
-//     url: axeResultObj.url, 
-//     testEnvironment: axeResultObj.testEnvironment, 
-//     timeStamp: date,
-//     violations: axeResultObj.violations,
-//     passes: axeResultObj.passes,
-//     incomplete: axeResultObj.incomplete,
-//     inapplicable: axeResultObj.inapplicable,
-//     axe_meta_data: {
-//       testEngine: axeResultObj.testEngine,
-//       testRunner: axeResultObj.testRunner,
-//       toolOptions: axeResultObj.toolOptions,
-//     },
-//     project_name: projectName,
-//     scan_name: scanName,
-//     revision: revision,
-//     organisation: organisation,
-//   })
-
-//   return _newModel
-// }
-
-
-  // if(previousScan === undefined) {
-  //   console.log(date.toString())
-  //   console.log(applicableRuleIds)
-  //   // 
-  // }
