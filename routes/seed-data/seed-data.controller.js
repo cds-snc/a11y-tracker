@@ -24,6 +24,6 @@ const seedMockScanSeries = async (req, res) => {
 }
 
 module.exports = (app) => {
-  app.get('/mock-data/mock-scan-series', seedMockScanSeries)
-  app.get('/mock-data/delete', deleteAllMockScanDocuments)
+  app.get('/seed-data/create', seedMockScanSeries)
+  app.get('/seed-data/delete', deleteAllMockScanDocuments)
 }
