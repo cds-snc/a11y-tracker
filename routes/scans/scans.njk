@@ -22,7 +22,7 @@
                         <td>{{ scan.incomplete.length }}</td>
                         <td>{{ scan.inapplicable.length }}</td>
                         <td>{{ scan.passes.length }}</td>
-                        <td>{{ scan.timeStamp.toISOString() }}</td>
+                        <td>{{ scan.timeStamp.toLocaleDateString() }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
