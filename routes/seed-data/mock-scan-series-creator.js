@@ -25,7 +25,7 @@ const createMockScanSeries = async (config) => {
 
   while (scanDate <= scanSeriesEndDate) {
     result = await newMockScanResult(scanDate)
-    await A11yScan.insertAxeCoreResult(result, _p.project_name, _p.scan_name, _p.revision, _p.organisation)
+    await A11yScan.createFromAxeCoreResult(result, _p.project_name, _p.scan_name, _p.revision, _p.organisation)
     
     scanDate.setDate(scanDate.getDate() + _p.scanFrequency)
   }

@@ -18,7 +18,7 @@ const a11yScanSchema = new Schema({
   timestamps: true
 })
 
-a11yScanSchema.statics.insertAxeCoreResult = async function(axeResultObj, projectName, scanName, revision, organisation) {
+a11yScanSchema.statics.createFromAxeCoreResult = async function(axeResultObj, projectName, scanName, revision, organisation) {
   const _newModel = new this({
     url: axeResultObj.url,
     testEnvironment: axeResultObj.testEnvironment,
