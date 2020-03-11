@@ -14,6 +14,8 @@ const { hasData, contextMiddleware } = require('./utils')
 const { addNunjucksFilters } = require('./filters')
 const csp = require('./config/csp.config')
 const csrf = require('csurf')
+const cors = require('cors')
+
 
 // check to see if we have a custom configRoutes function
 let { routes, locales } = require('./config/routes.config')
@@ -30,6 +32,7 @@ app.use(bodyParser.json({limit: '2mb'})) // the JSON payloads we are expecting f
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser(process.env.app_session_secret))
 app.use(require('./config/i18n.config').init)
+app.options('*', cors()) // include before other routes
 
 // CSRF setup
 const csrfMiddleware = csrf({cookie: true, signed: true })
