@@ -33,12 +33,11 @@ const createMockScanSeries = async (config) => {
 
 const newMockScanResult = async (date) => {
   const _sr = props.finalScanResult,
-  violations = getMockViolations()
-  passes = getMockPasses()
+  mockRuleSpread = generateMockRuleSpread()
 
   let mockResult = {
-    violations: violations,
-    passes: passes,
+    violations: mockRuleSpread.violations,
+    passes: mockRuleSpread.passes,
     incomplete: [],
     inapplicable: [],
     "testEngine": _sr.testEngine,
@@ -51,18 +50,23 @@ const newMockScanResult = async (date) => {
   return mockResult
 }
 
-const getMockViolations = () => {
+const generateMockRuleSpread = () => {
   const nRules = props.relevantAxeRules.length,
-  nHalf = Math.round(nRules / 2)
+  rando = getRandomInt(nRules)
 
-  return props.relevantAxeRules.slice(0, nHalf - 1)
-}
+  let mockRulesSpread = {
+    violations: [],
+    passes: []
+  }
 
-const getMockPasses = () => {
-  const nRules = props.relevantAxeRules.length,
-  nHalf = Math.round(nRules / 2)
-
-  return props.relevantAxeRules.slice(nHalf, nRules - 1)
+  props.relevantAxeRules.forEach((rule, index) => {
+    if (rando % (index+1)) {
+      mockRulesSpread.passes.push(rule)
+    } else {
+      mockRulesSpread.violations.push(rule)
+    }
+  })
+  return mockRulesSpread
 }
 
 const getRelevantAxeRules = () => {
@@ -73,6 +77,10 @@ const getRelevantAxeRules = () => {
   rules =  allAxeRules.filter(rule => relevantAxeRuleIds.includes(rule.ruleId))
   
   return rules
+}
+
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 module.exports = createMockScanSeries
