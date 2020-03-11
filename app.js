@@ -32,6 +32,7 @@ app.use(bodyParser.json({limit: '2mb'})) // the JSON payloads we are expecting f
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser(process.env.app_session_secret))
 app.use(require('./config/i18n.config').init)
+app.use(cors())
 app.options('*', cors()) // include before other routes
 
 // CSRF setup
