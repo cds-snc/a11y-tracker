@@ -6,7 +6,7 @@ let props = {
   project_name: "Mock Project",
   scan_name: "Mock Scan",
   revision: "Mock hash",
-  organisation: "cdssnc",
+  organisation: "mockorg",
   seriesStartDate: new Date('2018-02-09T16:20:00'),
   seriesEndDate: new Date('2020-02-09T16:20:00'), 
   scanFrequency: 7, // number of days between scans
