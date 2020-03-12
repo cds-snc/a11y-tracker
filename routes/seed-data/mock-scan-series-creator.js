@@ -21,6 +21,7 @@ const createMockScanSeries = async (config) => {
   
   const scanDate = new Date(props.seriesStartDate)
 
+  let newResult = {}
   while (scanDate <= props.seriesEndDate) {
     newResult = await newMockScanResult(scanDate)
     await A11yScan.createFromAxeCoreResult(newResult, props.project_name, props.scan_name, props.revision, props.organisation)
@@ -31,11 +32,11 @@ const createMockScanSeries = async (config) => {
 } 
 
 const newMockScanResult = async (date) => {
-  const _sr = props.finalScanResult,
-  rulesSet = getAxeRulesForScan(date),
-  mockRuleSpread = generateMockRulesSpread(rulesSet)
-
-  let mockResult = {
+  const _sr = props.finalScanResult
+  const rulesSet = getAxeRulesForScan(date)
+  const mockRuleSpread = generateMockRulesSpread(rulesSet)
+  
+  const mockResult = {
     violations: mockRuleSpread.violations,
     passes: mockRuleSpread.passes,
     incomplete: [],
@@ -51,12 +52,12 @@ const newMockScanResult = async (date) => {
 }
 
 const generateMockRulesSpread = (rules) => {
-  const nRules = rules.length,
-  rando = getRandomInt(nRules)
+  const nRules = rules.length
+  const rando = getRandomInt(nRules)
 
-  let mockRulesSpread = {
+  const mockRulesSpread = {
     violations: [],
-    passes: []
+    passes: [],
   }
 
   rules.forEach((rule, index) => {
@@ -70,26 +71,24 @@ const generateMockRulesSpread = (rules) => {
 }
 
 const getAxeRulesForScan = (scanDate) => {
-  const allRules = props.axeRulesForSeries,
-  nRules = allRules.length,
-  mSecsFromStart = scanDate - props.seriesStartDate,
-  cutOff = Math.round(mSecsFromStart / props.mSecsSeriesDuration * nRules)
+  const allRules = props.axeRulesForSeries
+  const nRules = allRules.length
+  const mSecsFromStart = scanDate - props.seriesStartDate
+  const cutOff = Math.round(mSecsFromStart / props.mSecsSeriesDuration * nRules)
   
   return allRules.slice(0, cutOff)
 }
 
-const getAxeRulesForSeries = () => {
-  let _fsr = props.finalScanResult
-  
-  const finalScanRules = [..._fsr.violations, ..._fsr.passes],
-  relevantAxeRuleIds = finalScanRules.map(rule => rule.id),
-  rules =  allAxeRules.filter(rule => relevantAxeRuleIds.includes(rule.ruleId))
+const getAxeRulesForSeries = () => {  
+  const finalScanRules = [...props.finalScanResult.violations, ...props.finalScanResult.passes]
+  const relevantAxeRuleIds = finalScanRules.map(rule => rule.id)
+  const rules =  allAxeRules.filter(rule => relevantAxeRuleIds.includes(rule.ruleId))
   
   return rules
 }
 
 const getRandomInt = (max) => {
-  return Math.floor(Math.random() * Math.floor(max));
+  return Math.floor(Math.random() * Math.floor(max))
 }
 
 module.exports = createMockScanSeries
