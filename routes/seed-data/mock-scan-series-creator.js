@@ -11,6 +11,7 @@ let props = {
   seriesEndDate: new Date('2020-02-09T16:20:00'), 
   scanFrequency: 7, // number of days between scans
   axeRulesForSeries: allAxeRules,
+  previousScanViolations: [],
 }
 
 const createMockScanSeries = async (config) => { 
@@ -21,10 +22,13 @@ const createMockScanSeries = async (config) => {
   
   const scanDate = new Date(props.seriesStartDate)
 
-  let newResult = {}
+  let newScanResult = {}
+
   while (scanDate <= props.seriesEndDate) {
-    newResult = await newMockScanResult(scanDate)
-    await A11yScan.createFromAxeCoreResult(newResult, props.project_name, props.scan_name, props.revision, props.organisation)
+    newScanResult = await newMockScanResult(scanDate)
+    await A11yScan.createFromAxeCoreResult(newScanResult, props.project_name, props.scan_name, props.revision, props.organisation)
+
+    props.previousScanViolations = [...newScanResult.violations]
     
     scanDate.setDate(scanDate.getDate() + props.scanFrequency)
   }
@@ -52,16 +56,25 @@ const newMockScanResult = async (date) => {
 }
 
 const generateMockRulesSpread = (rules) => {
-  const nRules = rules.length
-  const rando = getRandomInt(nRules)
+  const prevScanViolatedRules = props.previousScanViolations
+  const prevScanViolatedRuleIds = prevScanViolatedRules.map(rule => rule.ruleId)
+  const rulesSansPreviousViolations = rules.filter(rule => !prevScanViolatedRuleIds.includes(rule.ruleId)) 
 
   const mockRulesSpread = {
     violations: [],
     passes: [],
   }
 
-  rules.forEach((rule, index) => {
-    if (rando % (index+1)) {
+  prevScanViolatedRules.forEach((rule) => {
+    if (getRandomPercentage() < 85) { // assume that previous violations are corrected between scans at a probability of 85% 
+      mockRulesSpread.passes.push(rule)
+    } else {
+      mockRulesSpread.violations.push(rule)
+    }
+  })
+
+  rulesSansPreviousViolations.forEach((rule) => {
+    if (getRandomPercentage() >= 15) { // assume that there is a 15% probability that each relevant a11y rule may be violated between scans 
       mockRulesSpread.passes.push(rule)
     } else {
       mockRulesSpread.violations.push(rule)
@@ -87,7 +100,7 @@ const getAxeRulesForSeries = () => {
   return rules
 }
 
-const getRandomInt = (max) => {
+const getRandomPercentage = (max = 100) => {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
