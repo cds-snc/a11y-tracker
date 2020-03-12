@@ -7,33 +7,33 @@ let props = {
   scan_name: "Mock Scan",
   revision: "Mock hash",
   organisation: "cdssnc",
-  scanSeriesStartDate: new Date('2018-02-09T16:20:00'), 
+  seriesStartDate: new Date('2018-02-09T16:20:00'),
+  seriesEndDate: new Date('2020-02-09T16:20:00'), 
   scanFrequency: 7, // number of days between scans
-  relevantAxeRules: allAxeRules 
+  axeRulesForSeries: allAxeRules,
 }
 
 const createMockScanSeries = async (config) => { 
+  props.seriesEndDate = new Date()
   props = Object.assign(props, config)
-  props.relevantAxeRules =  getRelevantAxeRules()
-  // console.log(props.relevantAxeRules)
+  props.axeRulesForSeries =  getAxeRulesForSeries()
+  props.mSecsSeriesDuration = props.seriesEndDate - props.seriesStartDate
   
-  let scanDate = props.scanSeriesStartDate, 
-  scanSeriesEndDate = Date.now(),
-  result = {},
-  _p = props
+  const scanDate = new Date(props.seriesStartDate)
 
-  while (scanDate <= scanSeriesEndDate) {
+  while (scanDate <= props.seriesEndDate) {
     newResult = await newMockScanResult(scanDate)
-    await A11yScan.createFromAxeCoreResult(newResult, _p.project_name, _p.scan_name, _p.revision, _p.organisation)
-
-    scanDate.setDate(scanDate.getDate() + _p.scanFrequency)
+    await A11yScan.createFromAxeCoreResult(newResult, props.project_name, props.scan_name, props.revision, props.organisation)
+    
+    scanDate.setDate(scanDate.getDate() + props.scanFrequency)
   }
   return true
 } 
 
 const newMockScanResult = async (date) => {
   const _sr = props.finalScanResult,
-  mockRuleSpread = generateMockRuleSpread()
+  rulesSet = getAxeRulesForScan(date),
+  mockRuleSpread = generateMockRulesSpread(rulesSet)
 
   let mockResult = {
     violations: mockRuleSpread.violations,
@@ -50,8 +50,8 @@ const newMockScanResult = async (date) => {
   return mockResult
 }
 
-const generateMockRuleSpread = () => {
-  const nRules = props.relevantAxeRules.length,
+const generateMockRulesSpread = (rules) => {
+  const nRules = rules.length,
   rando = getRandomInt(nRules)
 
   let mockRulesSpread = {
@@ -59,7 +59,7 @@ const generateMockRuleSpread = () => {
     passes: []
   }
 
-  props.relevantAxeRules.forEach((rule, index) => {
+  rules.forEach((rule, index) => {
     if (rando % (index+1)) {
       mockRulesSpread.passes.push(rule)
     } else {
@@ -69,7 +69,16 @@ const generateMockRuleSpread = () => {
   return mockRulesSpread
 }
 
-const getRelevantAxeRules = () => {
+const getAxeRulesForScan = (scanDate) => {
+  const allRules = props.axeRulesForSeries,
+  nRules = allRules.length,
+  mSecsFromStart = scanDate - props.seriesStartDate,
+  cutOff = Math.round(mSecsFromStart / props.mSecsSeriesDuration * nRules)
+  
+  return allRules.slice(0, cutOff)
+}
+
+const getAxeRulesForSeries = () => {
   let _fsr = props.finalScanResult
   
   const finalScanRules = [..._fsr.violations, ..._fsr.passes],
