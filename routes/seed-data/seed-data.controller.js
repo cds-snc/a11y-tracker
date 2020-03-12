@@ -2,7 +2,7 @@ const A11yScan = require('../../models/a11y-scan.js')
 const createMockScanSeries = require('./mock-scan-series-creator.js')
 const vacScan = require('./data/vac-axe-results.json')
 
-const org = "mockcdssnc"
+const org = "mock-vac"
 
 const deleteAllMockScanDocuments = async (req, res) => {
   await A11yScan.deleteMany({organisation: org})
