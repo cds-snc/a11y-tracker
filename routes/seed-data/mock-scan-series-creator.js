@@ -3,8 +3,8 @@ const allAxeRules = require('./data/axe-rules.json')
 
 let props = {
   finalScanResult: {}, // a real axe result representing the final scan in the mock series, from which the back dated mock results will be inferred
-  project_name: "Mock Project",
-  scan_name: "Mock Scan",
+  projectName: "Mock Project",
+  scanName: "Mock Scan",
   revision: "Mock hash",
   organisation: "mockorg",
   seriesStartDate: new Date('2018-02-09T16:20:00'),
@@ -26,7 +26,7 @@ const createMockScanSeries = async (config) => {
 
   while (scanDate <= props.seriesEndDate) {
     newScanResult = await newMockScanResult(scanDate)
-    await A11yScan.createFromAxeCoreResult(newScanResult, props.project_name, props.scan_name, props.revision, props.organisation)
+    await A11yScan.createFromAxeCoreResult(newScanResult, props.projectName, props.scanName, props.revision, props.organisation)
 
     props.previousScanViolations = [...newScanResult.violations]
     
