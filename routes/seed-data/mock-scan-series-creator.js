@@ -25,18 +25,17 @@ const createMockScanSeries = async (config) => {
   let newScanResult = {}
 
   while (scanDate <= props.seriesEndDate) {
-    newScanResult = await newMockScanResult(scanDate)
+    newScanResult = newMockScanResult(scanDate)
+    props.previousScanViolations = [...newScanResult.violations]
     props.revision = Math.round(1000*(props.revision + 0.03))/1000
     await A11yScan.createFromAxeCoreResult(newScanResult, props.projectName, props.scanName, props.revision, props.organisation)
-
-    props.previousScanViolations = [...newScanResult.violations]
     
     scanDate.setDate(scanDate.getDate() + props.scanFrequency)
   }
   return true
 } 
 
-const newMockScanResult = async (date) => {
+const newMockScanResult = (date) => {
   const _sr = props.finalScanResult
   const rulesSet = getAxeRulesForScan(date)
   const mockRuleSpread = generateMockRulesSpread(rulesSet)
