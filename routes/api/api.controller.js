@@ -18,7 +18,7 @@ const addA11yScanResult = async (req, res) => {
 
   try {
     const _json = req.body // JSON data representing one scan 
-    await A11yScan.insertAxeCoreResult(_json.result, _json.project_name, _json.scan_name, _json.revision, key.organisation)  
+    await A11yScan.createFromAxeCoreResult(_json.result, _json.project_name, _json.scan_name, _json.revision, key.organisation)  
     res.json({ message: 'Success' })
   } catch(e) {
     res.status(500).json({ message: 'Failed to save! Check schema!' })

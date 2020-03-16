@@ -8,6 +8,7 @@
         <table class="scans-table w-full">
             <thead>
                 <tr>
+                    <th>Scan revision</th>
                     <th>Failed</th>
                     <th>Incomplete</th>
                     <th>Inapplicable</th>
@@ -18,11 +19,12 @@
             <tbody>
                 {% for scan in scans %}
                     <tr class="text-center">
+                        <td>{{ scan.revision }}</td>
                         <td>{{ scan.violations.length }}</td>
                         <td>{{ scan.incomplete.length }}</td>
                         <td>{{ scan.inapplicable.length }}</td>
                         <td>{{ scan.passes.length }}</td>
-                        <td>{{ scan.timeStamp.toISOString() }}</td>
+                        <td>{{ scan.timeStamp.toLocaleDateString() }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

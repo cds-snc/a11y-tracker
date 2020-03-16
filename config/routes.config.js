@@ -3,7 +3,7 @@ const routes = [
   { name: 'start', path: { en: '/start', fr: '/debut' } },
   { name: 'scans', path: { en: '/scans', fr: '/scans' } },
   { name: 'api' },
-  { name: 'mock-data'},
+  { name: 'seed-data'},
 ]
 
 const locales = ['en', 'fr']
