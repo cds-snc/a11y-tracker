@@ -5,7 +5,6 @@ let props = {
   finalScanResult: {}, // a real axe result representing the final scan in the mock series, from which the back dated mock results will be inferred
   projectName: "Mock Project",
   scanName: "Mock Scan",
-  revision: "Mock hash",
   organisation: "mockorg",
   seriesStartDate: new Date('2018-02-09T16:20:00'),
   seriesEndDate: new Date('2020-02-09T16:20:00'), 
@@ -16,6 +15,7 @@ let props = {
 
 const createMockScanSeries = async (config) => { 
   props.seriesEndDate = new Date()
+  props.revision = 0.0
   props = Object.assign(props, config)
   props.axeRulesForSeries =  getAxeRulesForSeries()
   props.mSecsSeriesDuration = props.seriesEndDate - props.seriesStartDate
@@ -26,6 +26,7 @@ const createMockScanSeries = async (config) => {
 
   while (scanDate <= props.seriesEndDate) {
     newScanResult = await newMockScanResult(scanDate)
+    props.revision = Math.round(1000*(props.revision + 0.03))/1000
     await A11yScan.createFromAxeCoreResult(newScanResult, props.projectName, props.scanName, props.revision, props.organisation)
 
     props.previousScanViolations = [...newScanResult.violations]
