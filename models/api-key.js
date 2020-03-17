@@ -14,6 +14,8 @@ const apiKeySchema = new Schema({
   timestamps: true
 })
 
+apiKeySchema.index({ key: 1 });
+
 const ApiKey = mongoose.model('ApiKey', apiKeySchema)
 
 module.exports = ApiKey
