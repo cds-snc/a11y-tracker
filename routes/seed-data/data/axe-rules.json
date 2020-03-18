@@ -8,7 +8,8 @@
       "best-practice",
       "cat.keyboard"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "area-alt",
@@ -22,7 +23,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "7"
   },
   {
     "ruleId": "aria-allowed-attr",
@@ -34,7 +36,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "3"
   },
   {
     "ruleId": "aria-allowed-role",
@@ -45,7 +48,8 @@
       "cat.aria",
       "best-practice"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "9"
   },
   {
     "ruleId": "aria-dpub-role-fallback",
@@ -58,7 +62,8 @@
       "wcag131",
       "deprecated"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "9"
   },
   {
     "ruleId": "aria-hidden-body",
@@ -70,7 +75,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "8"
   },
   {
     "ruleId": "aria-hidden-focus",
@@ -83,7 +89,8 @@
       "wcag412",
       "wcag131"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "3"
   },
   {
     "ruleId": "aria-input-field-name",
@@ -94,7 +101,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "2"
   },
   {
     "ruleId": "aria-required-attr",
@@ -106,7 +114,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "2"
   },
   {
     "ruleId": "aria-required-children",
@@ -118,7 +127,8 @@
       "wcag2a",
       "wcag131"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "5"
   },
   {
     "ruleId": "aria-required-parent",
@@ -130,7 +140,8 @@
       "wcag2a",
       "wcag131"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "2"
   },
   {
     "ruleId": "aria-roledescription",
@@ -142,7 +153,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "5"
   },
   {
     "ruleId": "aria-roles",
@@ -154,7 +166,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "3"
   },
   {
     "ruleId": "aria-toggle-field-name",
@@ -165,7 +178,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "3"
   },
   {
     "ruleId": "aria-valid-attr-value",
@@ -177,7 +191,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "2"
   },
   {
     "ruleId": "aria-valid-attr",
@@ -189,7 +204,8 @@
       "wcag2a",
       "wcag412"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "5"
   },
   {
     "ruleId": "audio-caption",
@@ -203,7 +219,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "4"
   },
   {
     "ruleId": "autocomplete-valid",
@@ -215,7 +232,8 @@
       "wcag21aa",
       "wcag135"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "9"
   },
   {
     "ruleId": "avoid-inline-spacing",
@@ -226,7 +244,8 @@
       "wcag21aa",
       "wcag1412"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "7"
   },
   {
     "ruleId": "blink",
@@ -240,7 +259,8 @@
       "section508",
       "section508.22.j"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "6"
   },
   {
     "ruleId": "button-name",
@@ -254,7 +274,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "10"
   },
   {
     "ruleId": "bypass",
@@ -268,7 +289,8 @@
       "section508",
       "section508.22.o"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "10"
   },
   {
     "ruleId": "checkboxgroup",
@@ -280,7 +302,8 @@
       "best-practice",
       "deprecated"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "7"
   },
   {
     "ruleId": "color-contrast",
@@ -292,7 +315,8 @@
       "wcag2aa",
       "wcag143"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "6"
   },
   {
     "ruleId": "css-orientation-lock",
@@ -305,7 +329,8 @@
       "wcag21aa",
       "experimental"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "definition-list",
@@ -317,7 +342,8 @@
       "wcag2a",
       "wcag131"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "dlitem",
@@ -329,7 +355,8 @@
       "wcag2a",
       "wcag131"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "document-title",
@@ -341,7 +368,8 @@
       "wcag2a",
       "wcag242"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "2"
   },
   {
     "ruleId": "duplicate-id-active",
@@ -353,7 +381,8 @@
       "wcag2a",
       "wcag411"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "3"
   },
   {
     "ruleId": "duplicate-id-aria",
@@ -365,7 +394,8 @@
       "wcag2a",
       "wcag411"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "1"
   },
   {
     "ruleId": "duplicate-id",
@@ -377,7 +407,8 @@
       "wcag2a",
       "wcag411"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "5"
   },
   {
     "ruleId": "empty-heading",
@@ -388,7 +419,8 @@
       "cat.name-role-value",
       "best-practice"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "3"
   },
   {
     "ruleId": "focus-order-semantics",
@@ -400,7 +432,8 @@
       "best-practice",
       "experimental"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "3"
   },
   {
     "ruleId": "form-field-multiple-labels",
@@ -412,7 +445,8 @@
       "wcag2a",
       "wcag332"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "3"
   },
   {
     "ruleId": "frame-tested",
@@ -424,7 +458,8 @@
       "review-item",
       "best-practice"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "10"
   },
   {
     "ruleId": "frame-title-unique",
@@ -435,7 +470,8 @@
       "cat.text-alternatives",
       "best-practice"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "2"
   },
   {
     "ruleId": "frame-title",
@@ -450,7 +486,8 @@
       "section508",
       "section508.22.i"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "5"
   },
   {
     "ruleId": "heading-order",
@@ -461,7 +498,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "5"
   },
   {
     "ruleId": "hidden-content",
@@ -474,7 +512,8 @@
       "review-item",
       "best-practice"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "1"
   },
   {
     "ruleId": "html-has-lang",
@@ -486,7 +525,8 @@
       "wcag2a",
       "wcag311"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "4"
   },
   {
     "ruleId": "html-lang-valid",
@@ -498,7 +538,8 @@
       "wcag2a",
       "wcag311"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "html-xml-lang-mismatch",
@@ -510,7 +551,8 @@
       "wcag2a",
       "wcag311"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "6"
   },
   {
     "ruleId": "identical-links-same-purpose",
@@ -522,7 +564,8 @@
       "wcag249",
       "best-practice"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "3"
   },
   {
     "ruleId": "image-alt",
@@ -536,7 +579,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "8"
   },
   {
     "ruleId": "image-redundant-alt",
@@ -547,7 +591,8 @@
       "cat.text-alternatives",
       "best-practice"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "7"
   },
   {
     "ruleId": "input-button-name",
@@ -561,7 +606,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "7"
   },
   {
     "ruleId": "input-image-alt",
@@ -575,7 +621,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "1"
   },
   {
     "ruleId": "label-content-name-mismatch",
@@ -587,7 +634,8 @@
       "wcag253",
       "experimental"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "3"
   },
   {
     "ruleId": "label-title-only",
@@ -598,7 +646,8 @@
       "cat.forms",
       "best-practice"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "4"
   },
   {
     "ruleId": "label",
@@ -613,7 +662,8 @@
       "section508",
       "section508.22.n"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "10"
   },
   {
     "ruleId": "landmark-banner-is-top-level",
@@ -624,7 +674,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "6"
   },
   {
     "ruleId": "landmark-complementary-is-top-level",
@@ -635,7 +686,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "1"
   },
   {
     "ruleId": "landmark-contentinfo-is-top-level",
@@ -646,7 +698,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "4"
   },
   {
     "ruleId": "landmark-main-is-top-level",
@@ -657,7 +710,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "8"
   },
   {
     "ruleId": "landmark-no-duplicate-banner",
@@ -668,7 +722,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "6"
   },
   {
     "ruleId": "landmark-no-duplicate-contentinfo",
@@ -679,7 +734,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "6"
   },
   {
     "ruleId": "landmark-no-duplicate-main",
@@ -690,7 +746,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "6"
   },
   {
     "ruleId": "landmark-one-main",
@@ -701,7 +758,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "1"
   },
   {
     "ruleId": "landmark-unique",
@@ -712,7 +770,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "4"
   },
   {
     "ruleId": "layout-table",
@@ -725,7 +784,8 @@
       "wcag131",
       "deprecated"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "link-in-text-block",
@@ -738,7 +798,8 @@
       "wcag2a",
       "wcag141"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "2"
   },
   {
     "ruleId": "link-name",
@@ -753,7 +814,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "9"
   },
   {
     "ruleId": "list",
@@ -765,7 +827,8 @@
       "wcag2a",
       "wcag131"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "5"
   },
   {
     "ruleId": "listitem",
@@ -777,7 +840,8 @@
       "wcag2a",
       "wcag131"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "4"
   },
   {
     "ruleId": "marquee",
@@ -789,7 +853,8 @@
       "wcag2a",
       "wcag222"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "meta-refresh",
@@ -804,7 +869,8 @@
       "wcag224",
       "wcag325"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "10"
   },
   {
     "ruleId": "meta-viewport-large",
@@ -815,7 +881,8 @@
       "cat.sensory-and-visual-cues",
       "best-practice"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "3"
   },
   {
     "ruleId": "meta-viewport",
@@ -826,7 +893,8 @@
       "cat.sensory-and-visual-cues",
       "best-practice"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "3"
   },
   {
     "ruleId": "no-autoplay-audio",
@@ -838,7 +906,8 @@
       "wcag142",
       "experimental"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "7"
   },
   {
     "ruleId": "object-alt",
@@ -852,7 +921,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "4"
   },
   {
     "ruleId": "p-as-heading",
@@ -865,7 +935,8 @@
       "wcag131",
       "experimental"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "4"
   },
   {
     "ruleId": "page-has-heading-one",
@@ -876,7 +947,8 @@
       "cat.semantics",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "2"
   },
   {
     "ruleId": "radiogroup",
@@ -888,7 +960,8 @@
       "best-practice",
       "deprecated"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "6"
   },
   {
     "ruleId": "region",
@@ -899,7 +972,8 @@
       "cat.keyboard",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "6"
   },
   {
     "ruleId": "role-img-alt",
@@ -913,7 +987,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "2"
   },
   {
     "ruleId": "scope-attr-valid",
@@ -924,7 +999,8 @@
       "cat.tables",
       "best-practice"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "4"
   },
   {
     "ruleId": "scrollable-region-focusable",
@@ -935,7 +1011,8 @@
       "wcag2a",
       "wcag211"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "5"
   },
   {
     "ruleId": "server-side-image-map",
@@ -949,7 +1026,8 @@
       "section508",
       "section508.22.f"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "3"
   },
   {
     "ruleId": "skip-link",
@@ -960,7 +1038,8 @@
       "cat.keyboard",
       "best-practice"
     ],
-    "impact": "Moderate"
+    "impact": "Moderate",
+    "weight": "7"
   },
   {
     "ruleId": "svg-img-alt",
@@ -974,7 +1053,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "2"
   },
   {
     "ruleId": "tabindex",
@@ -985,7 +1065,8 @@
       "cat.keyboard",
       "best-practice"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "4"
   },
   {
     "ruleId": "table-duplicate-name",
@@ -996,7 +1077,8 @@
       "cat.tables",
       "best-practice"
     ],
-    "impact": "Minor"
+    "impact": "Minor",
+    "weight": "5"
   },
   {
     "ruleId": "table-fake-caption",
@@ -1011,7 +1093,8 @@
       "section508",
       "section508.22.g"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "4"
   },
   {
     "ruleId": "td-has-header",
@@ -1026,7 +1109,8 @@
       "section508",
       "section508.22.g"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "7"
   },
   {
     "ruleId": "td-headers-attr",
@@ -1040,7 +1124,8 @@
       "section508",
       "section508.22.g"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "th-has-data-cells",
@@ -1054,7 +1139,8 @@
       "section508",
       "section508.22.g"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "valid-lang",
@@ -1066,7 +1152,8 @@
       "wcag2aa",
       "wcag312"
     ],
-    "impact": "Serious"
+    "impact": "Serious",
+    "weight": "1"
   },
   {
     "ruleId": "video-caption",
@@ -1080,7 +1167,8 @@
       "section508",
       "section508.22.a"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "4"
   },
   {
     "ruleId": "video-description",
@@ -1095,6 +1183,7 @@
       "section508.22.b",
       "deprecated"
     ],
-    "impact": "Critical"
+    "impact": "Critical",
+    "weight": "3"
   }
 ]
