@@ -18,6 +18,8 @@ const a11yScanSchema = new Schema({
   timestamps: true
 })
 
+a11yScanSchema.index({ project_name: 1, scan_name: 1 });
+
 a11yScanSchema.statics.createFromAxeCoreResult = async function(axeResultObj, projectName, scanName, revision, organisation) {
   const _newModel = new this({
     url: axeResultObj.url,
