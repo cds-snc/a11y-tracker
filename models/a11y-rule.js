@@ -13,7 +13,6 @@ const a11yRuleSchema = new Schema({
 })
  
 a11yRuleSchema.statics.getTotalWeights = function() {
-  if (totalWeights === undefined) sumAllWeights()
   return totalWeights
 } 
 
@@ -31,9 +30,11 @@ const A11yRule = mongoose.model('A11yRule', a11yRuleSchema)
 let totalWeights
 
 const sumAllWeights = function() {
-  totalWeights = A11yRule.aggregate().
-    group({ _id: null, total: { $sum: "$weight"  }}).
-    then(result => result[0] === undefined ? 0 : result[0].total)
-} 
+  A11yRule.aggregate().group({ _id: null, total: { $sum: "$weight"  }}).
+    then(result => {
+      totalWeights = (result[0] === undefined ? 0 : result[0].total)
+    })
+}
 
+sumAllWeights()
 module.exports = A11yRule 
