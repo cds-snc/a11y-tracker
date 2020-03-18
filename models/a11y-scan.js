@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+const A11yRule = require('./a11y-rule.js')
+
 const a11yScanSchema = new Schema({
   url: {type: String, required: true}, // the URL that was scanned
   testEnvironment: {}, // state of the client/browser during the scan
@@ -42,5 +44,21 @@ a11yScanSchema.statics.createFromAxeCoreResult = async function(axeResultObj, pr
 
   await _newModel.save()  
 }
+
+a11yScanSchema.virtual("totalViolationWeights").get(function() {
+  let totalViolationWeights = 0
+  this.violations.forEach(violation => {
+    totalViolationWeights += Number(violation.weight)
+  }) 
+  return totalViolationWeights
+})
+
+a11yScanSchema.virtual("score").get(function() {
+  const violdatedRulesWeight = this.totalViolationWeights 
+  const allRulesWeight = A11yRule.getTotalWeights()
+  const percentOfRulesViolated = violdatedRulesWeight / allRulesWeight * 100
+  const score = 100 - Math.floor(percentOfRulesViolated)
+  return score
+})
 
 module.exports = mongoose.model('A11yScan', a11yScanSchema)
