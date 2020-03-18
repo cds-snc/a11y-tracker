@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const a11yRule = new Schema({
+const a11yRuleSchema = new Schema({
   ruleId: {type: String, required: true},
   description: {type: String, required: true},
   help: {type: String, required: true},
@@ -12,4 +12,10 @@ const a11yRule = new Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('A11yRule', a11yRule)
+a11yRuleSchema.statics.sumAllWeights = function() {
+  return this.aggregate().
+    group({ _id: null, total: { $sum: "$weight"  }}).
+    then(result => result[0].total)
+}  
+
+module.exports = mongoose.model('A11yRule', a11yRuleSchema)
