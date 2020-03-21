@@ -2,6 +2,7 @@
 const routes = [
   { name: 'start', path: { en: '/start', fr: '/debut' } },
   { name: 'scans', path: { en: '/scans', fr: '/scans' } },
+  { name: 'project' },
   { name: 'api' },
   { name: 'seed-data'},
 ]
