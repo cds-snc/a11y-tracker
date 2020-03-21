@@ -3,4 +3,12 @@
 
 {% block content %}
     <h1>Porject Overview</h1>
+    <div id={{id}} class="project-overview">
+        <canvas id="line-chart" class={{id}} width="400" height="400"></canvas>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/project.js"></script>
 {% endblock %}
