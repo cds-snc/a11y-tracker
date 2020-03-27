@@ -25,6 +25,16 @@ const addA11yScanResult = async (req, res) => {
   }
 }
 
+const scansIndex = async (req, res) => {
+  // const _p = new RegExp(req.query.project_name, 'i')
+  const _p = new RegExp("vac", 'i')
+  const _s = new RegExp("Results", 'i')
+  const scans = await A11yScan.find({ project_name: _p, scan_name: _s, timeStamp: { $gte: new Date(2019, 08, 01)}  }, 'timeStamp a11yScore', {sort: {timeStamp: 1}})
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify(scans));
+}
+
 module.exports = (app) => {
   app.post('/api/v1/scans', addA11yScanResult)
+  app.get('/api/scans', scansIndex)
 }

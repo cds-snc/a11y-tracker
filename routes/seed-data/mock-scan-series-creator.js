@@ -66,7 +66,7 @@ const generateMockRulesSpread = (rules) => {
   }
 
   prevScanViolatedRules.forEach((rule) => {
-    if (getRandomPercentage() < 85) { // assume that previous violations are corrected between scans at a probability of 85% 
+    if (getRandomPercentage() < 35) { // assume that previous violations are corrected between scans at a probability of 35% 
       mockRulesSpread.passes.push(rule)
     } else {
       mockRulesSpread.violations.push(rule)
@@ -74,7 +74,7 @@ const generateMockRulesSpread = (rules) => {
   })
 
   rulesSansPreviousViolations.forEach((rule) => {
-    if (getRandomPercentage() >= 100) { // assume that there is a 100% probability that each relevant a11y rule may be violated between scans 
+    if (getRandomPercentage() >= 85) { // assume that there is a 85% probability that each relevant a11y rule may be violated between scans 
       mockRulesSpread.passes.push(rule)
     } else {
       mockRulesSpread.violations.push(rule)
