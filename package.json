@@ -44,7 +44,7 @@
     "i18n": "^0.8.4",
     "mini-css-extract-plugin": "^0.8.0",
     "mongoose": "^5.9.1",
-    "nunjucks": "^3.2.0",
+    "nunjucks": "^3.2.1",
     "request": "^2.88.0",
     "sha2": "^1.0.2",
     "tailwindcss": "^1.1.3",
